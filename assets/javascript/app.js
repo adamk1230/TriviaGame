@@ -1,5 +1,6 @@
 
 numberRight = 0;
+var userAnsers = [];
 
 var questions = [ {
 	question: "Who killed Eddard Stark?",
@@ -27,7 +28,7 @@ console.log (questions[1].question);
 
 for (var i = 0; i < questions.length; i++) {
 	var pTag = $("<p>");
-	var form = $("<form>");
+	var form = $("<form class='question'>");
 
 	//set our question
 	pTag.html(questions[i].question);
@@ -53,27 +54,51 @@ for (var i = 0; i < questions.length; i++) {
 	$('#questionDiv').append(pTag);
 
 
-			
 } // end for
 
-// "<p>" + question[i].question + "</p>"
-// 		"<form>
-// 			<label class="radio-inline">
-// 				<input value=''  type="radio" name="optradio">The Mountain
-// 			</label>
-// 			<label class="radio-inline">
-// 				<input type="radio" name="optradio">Ser Ilyn Payne
-// 			</label>
-// 			<label class="radio-inline">
-// 				<input type="radio" name="optradio">The Hound
-// 			</label>
-// 			<label class="radio-inline">
-// 				<input type="radio" name="optradio">Little Finger
-// 			</label>
-// 		</form>
+
+  // run code everytime the key "a" is pressed
+document.onkeyup = function(e){
+	if (e.key == 'a') {
+
+		//original
+		// var selected = $('input[type=radio]:checked'); // THIS IS THE MONEY
+		// $.each(selected, function(){
+		// 	console.log(this)
+		// 	console.log(this.value)
+		// 	userAnsers.push(this.value);
+		// 	console.log(userAnsers);
+		// }) //end of each selected function
+
+		//WITH FIND
+    var selected = $('.question');
+    $.each(selected, function(){
+    	var checkBox = $(this).find("input[type=radio]:checked");
+    	console.log("checkBox: ");
+    	console.log(checkBox.val());
+    	// console.log("checkBox.value: ");
+    	// console.log(checkBox.value);
+    	console.log("this: ");
+    	console.log(this);
+    	// console.log("this.value :");
+    	// console.log(this.value);
+    	if (!checkBox.val()){
+    		console.log("unanswered");
+    		userAnsers.push("unanswered");
+    	}
+    	if (checkBox.val()) {
+    		console.log(checkBox.val());
+    		userAnsers.push(checkBox.val());
+    	}
+    	console.log(userAnsers);
+    }) //end of each selected function
 
 
+	} //end of if key =a
+} //end of on key up
 
+
+//var checkBox = $(this).find("input")
 
 
 
