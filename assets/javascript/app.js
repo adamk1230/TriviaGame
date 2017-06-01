@@ -1,6 +1,9 @@
 
 numberRight = 0;
-var userAnsers = [];
+numberWrong = 0;
+numberUnanswered = 0;
+var userAnswers = [];
+
 
 var questions = [ {
 	question: "Who killed Eddard Stark?",
@@ -66,8 +69,8 @@ document.onkeyup = function(e){
 		// $.each(selected, function(){
 		// 	console.log(this)
 		// 	console.log(this.value)
-		// 	userAnsers.push(this.value);
-		// 	console.log(userAnsers);
+		// 	userAnswers.push(this.value);
+		// 	console.log(userAnswers);
 		// }) //end of each selected function
 
 		//WITH FIND
@@ -84,21 +87,40 @@ document.onkeyup = function(e){
     	// console.log(this.value);
     	if (!checkBox.val()){
     		console.log("unanswered");
-    		userAnsers.push("unanswered");
+    		userAnswers.push("unanswered");
     	}
     	if (checkBox.val()) {
     		console.log(checkBox.val());
-    		userAnsers.push(checkBox.val());
+    		userAnswers.push(checkBox.val());
     	}
-    	console.log(userAnsers);
+    	console.log(userAnswers);
     }) //end of each selected function
 
+//grader
+for (var i = 0; i < questions.length; i++) {
+	if (userAnswers[i]=="unanswered") {
+		numberUnanswered++;
+	}
+	if (questions[i].correctAnswer==userAnswers[i]) {
+		numberRight++;
+	}
+	if (questions[i].correctAnswer!=userAnswers[i]){
+		numberWrong++;
+	}
+
+	console.log(numberUnanswered);
+	console.log(numberRight);
+	console.log(numberWrong);
+
+}//end for
 
 	} //end of if key =a
 } //end of on key up
 
 
 //var checkBox = $(this).find("input")
+
+
 
 
 
