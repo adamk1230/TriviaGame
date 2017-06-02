@@ -82,7 +82,7 @@ for (var i = 0; i < questions.length; i++) {
 } // end for
 
 //Countdown Timer
-var n = 10;
+var n = 60;
 setTimeout(countDown,1000);
 
 function countDown(){

@@ -1,4 +1,13 @@
 body {  
   background-image: url("../images/bgImage.jpg");
   background-position: center;
+  font-family: 'Cinzel Decorative', cursive;
+  color: #f28f0c;
+  font-weight: 900;
+}
+
+
+.overlay {
+  background-color: #241913;
+  opacity: 0.85;
 }
