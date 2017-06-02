@@ -26,9 +26,10 @@ var questions = [ {
 	choices: ["Drogon", "Rhaegal", "Viserion", "Balerion"],
 	correctAnswer: "Balerion"
 }];
+// console.log (questions[1].question);
 
-console.log (questions[1].question);
 
+//Prints questions to HTML
 for (var i = 0; i < questions.length; i++) {
 	var pTag = $("<p>");
 	var form = $("<form class='question'>");
@@ -59,6 +60,30 @@ for (var i = 0; i < questions.length; i++) {
 
 } // end for
 
+//Countdown Timer
+var n = 10;
+setTimeout(countDown,1000);
+
+function countDown(){
+   n--;
+   if(n > 0){
+      setTimeout(countDown,1000);
+   }
+   // debugger
+   $("#countdown").html(n);
+
+   // if (n === 0){
+   // // grader();	
+   // }
+   if (n === 0){
+   	grader();
+   }
+
+
+} //end countdown
+
+
+
 
   // run code everytime the key "a" is pressed
 document.onkeyup = function(e){
@@ -73,16 +98,71 @@ document.onkeyup = function(e){
 		// 	console.log(userAnswers);
 		// }) //end of each selected function
 
-		//WITH FIND
+
+// 		//WITH FIND
+//     var selected = $('.question');
+//     $.each(selected, function(){
+//     	var checkBox = $(this).find("input[type=radio]:checked");
+//     	console.log("checkBox: ");
+//     	console.log(checkBox.val());
+//     	// console.log("checkBox.value: ");
+//     	// console.log(checkBox.value);
+//     	console.log("this: ");
+//     	console.log(this);
+//     	// console.log("this.value :");
+//     	// console.log(this.value);
+//     	if (!checkBox.val()){
+//     		console.log("unanswered");
+//     		userAnswers.push("unanswered");
+//     	}
+//     	if (checkBox.val()) {
+//     		console.log(checkBox.val());
+//     		userAnswers.push(checkBox.val());
+//     	}
+//     	console.log(userAnswers);
+//     }) //end of each selected function
+
+// //grader
+// for (var i = 0; i < questions.length; i++) {
+// 	if (userAnswers[i]=="unanswered") {
+// 		numberUnanswered++;
+// 	}
+// 	if (questions[i].correctAnswer==userAnswers[i]) {
+// 		numberRight++;
+// 	}
+// 	if (questions[i].correctAnswer!=userAnswers[i]){
+// 		numberWrong++;
+// 	}
+
+// 	$("#correct").html(numberRight);
+// 	$("#wrong").html(numberWrong);
+// 	$("#unanswered").html(numberUnanswered);
+// 	console.log(numberUnanswered);
+// 	console.log(numberRight);
+// 	console.log(numberWrong);
+
+// }//end for
+
+	grader();
+
+	} //end of if key =a
+} //end of on key up
+
+
+
+function grader(){
+
+
+	//Finds questions.
     var selected = $('.question');
     $.each(selected, function(){
     	var checkBox = $(this).find("input[type=radio]:checked");
-    	console.log("checkBox: ");
-    	console.log(checkBox.val());
+    	// console.log("checkBox: ");
+    	// console.log(checkBox.val());
     	// console.log("checkBox.value: ");
     	// console.log(checkBox.value);
-    	console.log("this: ");
-    	console.log(this);
+    	// console.log("this: ");
+    	// console.log(this);
     	// console.log("this.value :");
     	// console.log(this.value);
     	if (!checkBox.val()){
@@ -96,58 +176,28 @@ document.onkeyup = function(e){
     	console.log(userAnswers);
     }) //end of each selected function
 
-//grader
-for (var i = 0; i < questions.length; i++) {
-	if (userAnswers[i]=="unanswered") {
-		numberUnanswered++;
-	}
-	if (questions[i].correctAnswer==userAnswers[i]) {
-		numberRight++;
-	}
-	if (questions[i].correctAnswer!=userAnswers[i]){
-		numberWrong++;
-	}
+	//grades the questions
+	for (var i = 0; i < questions.length; i++) {
+		if (userAnswers[i]=="unanswered") {
+			numberUnanswered++;
+		}
+		if (questions[i].correctAnswer==userAnswers[i]) {
+			numberRight++;
+		}
+		if (questions[i].correctAnswer!=userAnswers[i]){
+			numberWrong++;
+		}
 
-	console.log(numberUnanswered);
-	console.log(numberRight);
-	console.log(numberWrong);
+		$("#correct").html(numberRight);
+		$("#wrong").html(numberWrong);
+		$("#unanswered").html(numberUnanswered);
+		console.log(numberUnanswered);
+		console.log(numberRight);
+		console.log(numberWrong);
+	}//end for
 
-}//end for
-
-	} //end of if key =a
-} //end of on key up
-
-
-//var checkBox = $(this).find("input")
+} // end grader function
 
 
 
-
-
-
-// //Grades
-// function grader(){
-// if (document.getElementById("opt1").checked === true) {
-// 	numberRight ++;
-// 	$("#right").html(numberRight);
-// }
-// }
-
-
-//Countdown Timer
-var n = 5;
-setTimeout(countDown,1000);
-
-function countDown(){
-   n--;
-   if(n > 0){
-      setTimeout(countDown,1000);
-   }
-   // debugger
-   $("#countdown").html(n);
-
-   if (n === 0){
-   // grader();	
-   }
-}
 
