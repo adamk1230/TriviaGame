@@ -25,7 +25,28 @@ var questions = [ {
 	question: "Which of the following is NOT one of Daenerys Targaryen's Dragons.",
 	choices: ["Drogon", "Rhaegal", "Viserion", "Balerion"],
 	correctAnswer: "Balerion"
-}];
+},  {
+	question: "Who is commonly referred to as the Onion Night?",
+	choices: ["Ser Davos Seaworth", "Ser Bronn of the Blackwater", "Gendry", "Salladhor Saan"],
+	correctAnswer: "Ser Davos Seaworth"
+},  {
+	question: "Who gave Daenerys Targaryen her dragon eggs?",
+	choices: ["Ser Jorah Mormont", "Daario Naharis", "Lord Varys", "Illyrio Mopatis"],
+	correctAnswer: "Illyrio Mopatis"
+},	{
+	question: "Who was the King Beyond the Wall?",
+	choices: ["Benjen Stark", "Mance Rayder", "Tormund Giantsbane", "Jeor Mormont"],
+	correctAnswer: "Mance Rayder"
+},	{
+	question: "Which of the following is NOT located in the North.",
+	choices: ["Winterfell", "Dreadfort", "Riverrun", "Karhold"],
+	correctAnswer: "Riverrun"
+},	{
+	question: "How did King Joffery Baratheon die?",
+	choices: ["Poisoned", "Stabbed in the back", "In the Battle of the Blackwater", "Wound from wild boar"],
+	correctAnswer: "Poisoned"
+}
+];
 // console.log (questions[1].question);
 
 
@@ -83,73 +104,6 @@ function countDown(){
 } //end countdown
 
 
-
-
-  // run code everytime the key "a" is pressed
-document.onkeyup = function(e){
-	if (e.key == 'a') {
-
-		//original
-		// var selected = $('input[type=radio]:checked'); // THIS IS THE MONEY
-		// $.each(selected, function(){
-		// 	console.log(this)
-		// 	console.log(this.value)
-		// 	userAnswers.push(this.value);
-		// 	console.log(userAnswers);
-		// }) //end of each selected function
-
-
-// 		//WITH FIND
-//     var selected = $('.question');
-//     $.each(selected, function(){
-//     	var checkBox = $(this).find("input[type=radio]:checked");
-//     	console.log("checkBox: ");
-//     	console.log(checkBox.val());
-//     	// console.log("checkBox.value: ");
-//     	// console.log(checkBox.value);
-//     	console.log("this: ");
-//     	console.log(this);
-//     	// console.log("this.value :");
-//     	// console.log(this.value);
-//     	if (!checkBox.val()){
-//     		console.log("unanswered");
-//     		userAnswers.push("unanswered");
-//     	}
-//     	if (checkBox.val()) {
-//     		console.log(checkBox.val());
-//     		userAnswers.push(checkBox.val());
-//     	}
-//     	console.log(userAnswers);
-//     }) //end of each selected function
-
-// //grader
-// for (var i = 0; i < questions.length; i++) {
-// 	if (userAnswers[i]=="unanswered") {
-// 		numberUnanswered++;
-// 	}
-// 	if (questions[i].correctAnswer==userAnswers[i]) {
-// 		numberRight++;
-// 	}
-// 	if (questions[i].correctAnswer!=userAnswers[i]){
-// 		numberWrong++;
-// 	}
-
-// 	$("#correct").html(numberRight);
-// 	$("#wrong").html(numberWrong);
-// 	$("#unanswered").html(numberUnanswered);
-// 	console.log(numberUnanswered);
-// 	console.log(numberRight);
-// 	console.log(numberWrong);
-
-// }//end for
-
-	grader();
-
-	} //end of if key =a
-} //end of on key up
-
-
-
 function grader(){
 
 
@@ -181,13 +135,15 @@ function grader(){
 		if (userAnswers[i]=="unanswered") {
 			numberUnanswered++;
 		}
-		if (questions[i].correctAnswer==userAnswers[i]) {
-			numberRight++;
-		}
-		if (questions[i].correctAnswer!=userAnswers[i]){
-			numberWrong++;
-		}
+		else {
 
+			if (questions[i].correctAnswer==userAnswers[i]) {
+				numberRight++;
+			}
+			if (questions[i].correctAnswer!=userAnswers[i]){
+				numberWrong++;
+			}
+		}
 		$("#correct").html(numberRight);
 		$("#wrong").html(numberWrong);
 		$("#unanswered").html(numberUnanswered);
@@ -197,6 +153,16 @@ function grader(){
 	}//end for
 
 } // end grader function
+
+
+  // run code everytime the key "a" is pressed
+document.onkeyup = function(e){
+	if (e.key == 'a') {
+
+	grader();
+
+	} //end of if key =a
+} //end of on key up
 
 
 
