@@ -164,6 +164,3 @@ document.onkeyup = function(e){
 	} //end of if key =a
 } //end of on key up
 
-
-
-
