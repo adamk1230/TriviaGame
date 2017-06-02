@@ -1,3 +1,4 @@
+// Defined variables 
 
 numberRight = 0;
 numberWrong = 0;
@@ -58,17 +59,13 @@ for (var i = 0; i < questions.length; i++) {
 	//set our question
 	pTag.html(questions[i].question);
 	
-	// console.log(questions[i].choices)
-	// debugger
 	for(var j = 0; j < questions[i].choices.length; j++){
+		
 		var label = $("<label class='radio-inline'>");
-		// label.addClass("radio-inline");
 
 		var choice = $("<input type='radio' name='optradio'>");
 
-		//set attributes for the choice
-		// choice.attr("type","radio");
-		// choice.attr("name","optradio");
+		//set attributes for choice
 		choice.attr("value", questions[i].choices[j]);
 		label.append(choice);
 		label.append(questions[i].choices[j]);
@@ -81,8 +78,9 @@ for (var i = 0; i < questions.length; i++) {
 
 } // end for
 
+
 //Countdown Timer
-var n = 60;
+var n = 75;
 setTimeout(countDown,1000);
 
 function countDown(){
@@ -90,12 +88,9 @@ function countDown(){
    if(n > 0){
       setTimeout(countDown,1000);
    }
-   // debugger
+
    $("#countdown").html(n);
 
-   // if (n === 0){
-   // // grader();	
-   // }
    if (n === 0){
    	grader();
    }
@@ -104,6 +99,7 @@ function countDown(){
 } //end countdown
 
 
+//Function to grade the results
 function grader(){
 
 
@@ -111,14 +107,7 @@ function grader(){
     var selected = $('.question');
     $.each(selected, function(){
     	var checkBox = $(this).find("input[type=radio]:checked");
-    	// console.log("checkBox: ");
-    	// console.log(checkBox.val());
-    	// console.log("checkBox.value: ");
-    	// console.log(checkBox.value);
-    	// console.log("this: ");
-    	// console.log(this);
-    	// console.log("this.value :");
-    	// console.log(this.value);
+
     	if (!checkBox.val()){
     		console.log("unanswered");
     		userAnswers.push("unanswered");
@@ -155,12 +144,5 @@ function grader(){
 } // end grader function
 
 
-  // run code everytime the key "a" is pressed
-document.onkeyup = function(e){
-	if (e.key == 'a') {
 
-	grader();
-
-	} //end of if key =a
-} //end of on key up
 
